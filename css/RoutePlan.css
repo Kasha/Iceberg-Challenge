@@ -1,0 +1,118 @@
+h2 {
+    text-align: center;
+  }
+  
+  table caption {
+      padding: .5em 0;
+  }
+  
+  @media screen and (max-width: 767px) {
+    table caption {
+      border-bottom: 1px solid #ddd;
+    }
+  }
+  
+  .p {
+    text-align: center;
+    padding-top: 140px;
+    font-size: 14px;
+  }
+
+h1
+{
+    font-size:1.2em;
+}
+#board
+{
+    border: 1px gray solid; 
+    float: left;
+    background-color:rgb(61, 158, 223);
+}
+#boardDemo
+{
+    border: 1px gray solid; 
+    float: left;
+    background-color:rgb(61, 150, 209);
+}
+.container
+{
+    margin:10px;
+}
+.routePlan
+{
+    position:relative;
+    margin-left:40px;
+}
+
+.mode-demo
+{
+    display:none ;
+}
+
+.mode-route
+{
+    display:inline-block ;
+}
+
+.route
+{
+    display:none ;
+}
+
+.demo
+{
+    display:inline-block ;
+}
+
+.selectRoutePlanDiv
+{
+    padding-left:10px;
+}
+
+.routePlanLogStyle p
+{
+    font-size:1em;
+    color:rgba(16, 14, 14, 0.981);
+    font-weight: 400;
+}
+.routePlanLogStyle span
+{
+    font-size:1em;
+    color:rgb(7, 6, 6);
+    font-weight: 500;
+}
+.routeFormStyle form
+{
+    margin:2px;
+}
+
+.routeFormStyle form input
+{
+    margin:3px;
+}
+
+.selectModeStyle
+{
+    margin:4px;
+}
+
+.createShapeBtnEnabled
+{
+    color:white ;
+}
+
+.createShapeBtnDisabled
+{
+    color:gray ;
+}
+
+.shortPathBtnEnabled
+{
+    color:white ;
+}
+
+.shortPathBtnDisabled
+{
+    color:gray ;
+}
+

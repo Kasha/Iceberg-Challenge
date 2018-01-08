@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+  <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <link href="http://getbootstrap.com/2.3.2/assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/RoutePlan.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+    <script  src="js/Iter.js"></script>
+    <script  src="js/graphMath.js"></script>
+    <script  src="js/routePlan.js"></script> 
+    <script  src="js/drawController.js"></script>
+</head>
+<body>
+
+<div class="container-fluid" ng-app="GraphSearchAlgo" ng-controller="shapeCtrl">
+ 
+        <div class="container">
+                <h1>Iceberg Challenge board (500X500)</h1>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <canvas id="board" width="500px" height="500px" class="mode-{{data.selectedOption.val}}"></canvas>
+                        <canvas id="boardDemo" width="500px" height="500px" class="{{data.selectedOption.val}}"></canvas> 
+                    </div>
+                  <div class="panel-body">    
+                      <div class="row">
+                        <div class="col-sm-9">
+                               
+                                
+                          <div class="row">
+                            <div class="col-sm-9 routePlan">
+                                <div class="selectRoutePlanDiv">
+                                    <label for="routePlanSelect">Select a Route Plan: </label>
+                                    <select name="routePlanSelect" class="selectpicker selectModeStyle" ng-model="data.selectedOption"
+                                    ng-options="option.name for option in data.availableOptions track by option.id">
+                                    </select>
+                                </div>
+                                <div class="row routeFormStyle">
+                            
+                                    <form ng-submit="setStartLocation()" class="mode-{{data.selectedOption.val}}">
+                                        <input ng-model="data.startX"  size="2" placeholder="X" required type="number" min="10" max="499">
+                                        <input ng-model="data.startY"  size="2" placeholder="Y" required type="number" min="10" max="499">
+                                        <input class="btn-primary" type="submit" value="Start X,Y">
+                                    </form>
+                                    <form ng-submit="setEndLocation()" class="mode-{{data.selectedOption.val}}">
+                                            <input ng-model="data.endX"  size="2" placeholder="X" required type="number" min="10" max="499">
+                                            <input ng-model="data.endY"  size="2" placeholder="Y" required type="number" min="10" max="499">
+                                            <input class="btn-primary" type="submit" value="End X,Y">
+                                        </form>
+
+                                <form ng-submit="addData()" class="mode-{{data.selectedOption.val}}">
+                                    <input ng-model="data.x"  size="2" placeholder="X" required type="number" min="10" max="499">
+                                    <input ng-model="data.y"  size="2" placeholder="Y" required type="number" min="10" max="499">
+                                    
+                                    <input class="btn-primary" type="submit" value="Add point">
+                                    <input class="btn-primary createShapeBtn{{data.createShapeBtnState}}" type="button" value="Create" ng-click="createShape()">
+
+                                    <div id="list">
+                                            <div id="list">
+                                                Points:<input class="btn-primary shortPathBtn{{data.shortPathBtn}}" type="button" value="Shortest Path" ng-click="findShortPath()">
+                                                <ul>
+                                                    <li ng-repeat="point in data.points">
+                                                        [{{point.x}}, {{point.y}}] 
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div style="clear: both"></div>
+                                        </div>
+                                    </form>
+
+                                    <div class="routePlanLogStyle mode-{{data.selectedOption.val}}">
+                                            <p><span>Shortest distance between Start point</span> <span style="color:green;">(Green)</span></p> 
+                                            <p>{{data.startLocation}}</p>
+                                            <p> <span>and End point</span> <span style="color:red;">(Red)</span></p> 
+                                            <p> {{data.endLocation}} is <span style="color:rgb(61, 84, 61);">{{data.distance}}</span></p>
+                                            <p><span>Coordinates Route:</span>
+                                                <li ng-repeat="val in data.pathPoints">
+                                                    {{val}}
+                                                 </li>
+                                            </p>
+                                            <p><span>Distanced Route:</span>
+                                                <li ng-repeat="val in data.distanceRoute">
+                                                    {{val}}
+                                                </li>
+                                            </p>
+                                       </div>
+
+
+                                </div>
+                            </div>
+                            <div class="col-sm-9 routePlan">
+                                <div class="{{data.selectedOption.val}}">
+                                        <div class="routePlanLogStyle">
+                                            <p><span>Shortest distance between Start point</span> <span style="color:green;">(Green)</span></p> 
+                                            <p>{{data.startLocationDemo}}</p>
+                                            <p> <span>and End point</span> <span style="color:red;">(Red)</span></p> 
+                                            <p> {{data.endLocationDemo}} is <span style="color:rgb(61, 84, 61);">{{data.distanceDemo}}</span></p>
+                                            <p><span>Coordinates Route:</span>
+                                                <li ng-repeat="val in data.pathPointsDemo">
+                                                    {{val}}
+                                                 </li>
+                                            </p>
+                                            <p><span>Distanced Route:</span>
+                                                <li ng-repeat="val in data.distanceRouteDemo">
+                                                    {{val}}
+                                                </li>
+                                            </p>
+                                        </div>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+              </div>
+              
+    
+
+</div>
+<script  src="js/draw.js"></script>
+</body>
+</html>
