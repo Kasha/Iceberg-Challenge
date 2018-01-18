@@ -1,7 +1,9 @@
 # Iceberg-Challenge
 Navigate a ship from point A to point B in the Northern Ocean with icebergs. The path should be as short as possible and not cross any of the icebergs
 
-The Icebergs Challenge The task Navigate a ship from point A to point B in the Northern Ocean with icebergs. The path should be as short as possible and not cross any of the icebergs (touching an iceberg’s edge or corner is OK). You can assume all coordinates are positive decimals (if you wish) and all polygons are convex. Iceberg Web App
+The Icebergs Challenge The task Navigate a ship from point A to point B in the Northern Ocean with icebergs. The path should be as short as possible and not cross any of the icebergs (touching an iceberg’s edge or corner is OK). You can assume all coordinates are positive decimals (if you wish) and all polygons are convex. 
+
+Iceberg Web App
 
 Route Plan for creating start, end points and polygons
 Short Path Calculation
