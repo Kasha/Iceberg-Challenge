@@ -11,24 +11,17 @@ Demo with predefined start, end points and polygons.
 Route Plan for creating points and polygons Technology ES6 updated code and OO syntax, Angular, Bootstrap, HTML5 Canvas (Java script only)
 Install Copy folder as is to your host server (Copy and Play) Structure
 
-5.Route Plan Class
-
+Route Plan Class
 Create, Add and Manage a collection of Circles and Shapes
-
 Draw Shapes
-
 Calculates Shortest Path
 
 Implementation of graph routes and edges in (JavaScript implementation). Graph with all possible routes and their lengths. Created graph is analyzed using the shortest route algorithm (Dijkstra's algorithm) to calculate the shortest path.
 
 Point Class: Base class with x,y attributes
-
 Shape Class: Base class
-
 Create, Add and Manage a collection of segments
-
 Draw Shape
-
 Circle Class, extends Shape
 
 GraphSearchAlgo Module with shapeCtrl for Setting and Adding Shapes to Route Plan, execute short path method and display data
