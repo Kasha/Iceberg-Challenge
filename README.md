@@ -19,10 +19,10 @@ Copy folder as is to your host server (Copy and Play) Structure
 
 Tech
 ----
-Javascript (ES6), Angularjs, Bootstrap, JQuery
+Javascript (ES6), Angularjs, Bootstrap, JQuery, Canvas
 
-Route Plan Class
------------------
+Structure
+----------
 Create, Add and Manage a collection of Circles and Shapes
 
 Draw Shapes
@@ -40,8 +40,8 @@ Draw Shape
 
 Circle Class, extends Shape
 
-Create Graph Algo
-------------------
 GraphSearchAlgo Module (Angularjs) with shapeCtrl for Setting and Adding Shapes to Route Plan, execute short path method and display data
 
+Graph Edges Algorithm
+----------------------
 Graph Edges Algorithm Navigate a ship from point A to point B in the Northern Ocean with icebergs. The path should be as short as possible and not cross any of the icebergs (touching the iceberg is OK). Assumptions: All polygons are convex. The polygons are not overlapping with each other (touching is OK). Algorithm Observation: the shortest route must only go through the start and end points and vertices on the various icebergs. If an iceberg is blocking a possible travel between two points, it is always shorter to go around it to its edge rather than further. Therefore, we first build an undirected graph where each point (start, end and vertices of all the icebergs) is a node. Then, we go through each pair of nodes and figure out if a route between them is possible (not blocked by and iceberg). If the route is clear, we add an edge to the graph between the two nodes and mark its weight as the geometric distance between them. Finally, we have a graph with all possible routes and their lengths. What is left is to use a shortest route algorithm (such as Dijkstra's algorithm) to calculate the shortest path. Screen Cast Video: https://youtu.be/KXuh3wxa5tc Live Demo: http://veeca.me/iceberg/index.html
