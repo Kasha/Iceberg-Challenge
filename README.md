@@ -6,7 +6,8 @@ The Icebergs Challenge The task Navigate a ship from point A to point B in the N
 Route Plan for creating start, end points and polygons
 Short Path Calculation
 Visual display of Shapes and shortest path
-2 Route Plan Objects,
+
+Route Plan Objects,
 Demo with predefined start, end points and polygons.
 Route Plan for creating points and polygons Technology ES6 updated code and OO syntax, Angular, Bootstrap, HTML5 Canvas (Java script only)
 Install Copy folder as is to your host server (Copy and Play) Structure
